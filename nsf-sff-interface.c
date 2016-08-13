@@ -3,7 +3,11 @@
 #include <stdlib.h>
 #include <netdb.h>
 #include <netinet/in.h>
-
+#include <sys/socket.h>
+#include <linux/if_packet.h>
+#include <net/ethernet.h> /* the L2 protocols */
+#include <sys/ioctl.h>
+#include <net/if.h>
 #include <string.h>
 #include <errno.h>
 /*
@@ -13,23 +17,23 @@
 bool start_listening() {
 
 	int source_address_size , data_size, destination_address_size, bytes_sent;
-    struct sockaddr_ll source_address, destination_address;
-    unsigned char *buffer=malloc(65535);
+	struct sockaddr_ll source_address, destination_address;
+	unsigned char *buffer=malloc(65535);
 
-    int sock_raw = socket( PF_PACKET , SOCK_RAW , htons(ETH_P_ALL)) ; //For receiving
-    int sock = socket( PF_PACKET , SOCK_RAW , IPPROTO_RAW) ;            //For sending
+	int sock_raw = socket( PF_PACKET , SOCK_RAW , htons(ETH_P_ALL)) ; //For receiving
+	int sock = socket( PF_PACKET , SOCK_RAW , IPPROTO_RAW) ;            //For sending
 
-    memset(&source_address, 0, sizeof(struct sockaddr_ll));
-    source_address.sll_family = AF_PACKET;
-    source_address.sll_protocol = htons(ETH_P_ALL);
-    source_address.sll_ifindex = if_nametoindex("sff0");
-    if (bind(sock_raw, (struct sockaddr*) &source_address, sizeof(source_address)) < 0) {
-        perror("bind failed\n");
-        close(sock_raw);
-    }
+	memset(&source_address, 0, sizeof(struct sockaddr_ll));
+	source_address.sll_family = AF_PACKET;
+	source_address.sll_protocol = htons(ETH_P_ALL);
+	source_address.sll_ifindex = if_nametoindex("sff0");
+	if (bind(sock_raw, (struct sockaddr*) &source_address, sizeof(source_address)) < 0) {
+		perror("bind failed\n");
+		close(sock_raw);
+	}
 
-    memset(&destination_address, 0, sizeof(struct sockaddr_ll));
-    destination_address.sll_family = AF_PACKET;
+	memset(&destination_address, 0, sizeof(struct sockaddr_ll));
+	destination_address.sll_family = AF_PACKET;
     destination_address.sll_protocol = htons(ETH_P_ALL);
     destination_address.sll_ifindex = if_nametoindex("eth0");
     if (bind(sock, (struct sockaddr*) &destination_address, sizeof(destination_address)) < 0) {
