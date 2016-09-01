@@ -1,11 +1,11 @@
 #include "nsf-sff-interface.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
-#include "sys/types.h"
-#include "sys/socket.h"
-#include "netinet/in.h"
-#include "errno.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <errno.h>
 /*
 	BUF_LEN, SFF_LISTEN_PORT, SFF_LISTEN_ADDR
 
@@ -18,20 +18,24 @@ bool start_listening() {
 
 	int len, msg_size, option = 1;
 
+	printf("1: %d\n", errno);
 	if((server_fd == socket(PF_INET, SOCK_STREAM, 0)) == -1) {
 		printf("SFF: Cant't open stream socket\n");
 		exit(0);
 	}
-	
-	setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
-	memset(&server_addr, 0x00, sizeof(server_addr));
 
+	printf("2: %d\n", errno);
+	
+	//setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
+	//memset(&server_addr, 0x00, sizeof(server_addr));
+
+	printf("3: %d\n", errno);
 	/* server_addr setting */
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = inet_addr(SFF_LISTEN_ADDR); /*htonl(INADDR_ANY)*/;
+	server_addr.sin_addr.s_addr = INADDR_ANY; //inet_addr(SFF_LISTEN_ADDR); /*htonl(INADDR_ANY)*/;
 	server_addr.sin_port = htons(3210);
 
-	printf("2: %d\n", server_fd);
+	printf("4: %d %d\n", server_fd, errno);
 	if(bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
 		printf("SFF: Can't bind local address: %d\n", errno);
 		exit(0);
