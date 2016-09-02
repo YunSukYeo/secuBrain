@@ -1,10 +1,10 @@
 #include "nsf-sff-interface.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
+#include <netdb.h>
 #include <netinet/in.h>
+
+#include <string.h>
 #include <errno.h>
 /*
 	BUF_LEN, SFF_LISTEN_PORT, SFF_LISTEN_ADDR
@@ -16,37 +16,36 @@ bool start_listening() {
 	char temp[20];
 	int server_fd, client_fd;
 
-	int len, msg_size, option = 1;
+	int len, msg_size, portno = 1;
 
-	printf("1: %d\n", errno);
-	if((server_fd == socket(PF_INET, SOCK_STREAM, 0)) == -1) {
-		printf("SFF: Cant't open stream socket\n");
-		exit(0);
+	/* First call to socket() function */
+	server_fd = socket(AF_INET, SOCK_STREAM, 0);
+
+	if (server_fd < 0) {
+		perror("ERROR opening socket");
+		exit(1);
 	}
 
-	printf("2: %d\n", errno);
-	
-	//setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
-	//memset(&server_addr, 0x00, sizeof(server_addr));
+	/* Initialize socket structure */
+	bzero((char *) &server_addr, sizeof(server_addr));
+	portno = SFF_LISTEN_PORT;
 
-	printf("3: %d\n", errno);
-	/* server_addr setting */
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = INADDR_ANY; //inet_addr(SFF_LISTEN_ADDR); /*htonl(INADDR_ANY)*/;
-	server_addr.sin_port = htons(3210);
+	server_addr.sin_addr.s_addr = inet_addr(SFF_LISTEN_ADDR);
+	server_addr.sin_port = htons(portno);
 
-	printf("4: %d %d\n", server_fd, errno);
-	if(bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
-		printf("SFF: Can't bind local address: %d\n", errno);
-		exit(0);
+	/* Now bind the host address using bind() call.*/
+	if (bind(server_fd, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0) {
+		printf("SFF: ERROR on binding\n");
+		exit(1);
 	}
 
 	if(listen(server_fd, 5) < 0) {
-		printf("SFF: Can't listening connect: %d\n", errno);
+		printf("SFF: Can't listening connect\n");
 		exit(0);
 	}
 
-	memset(buffer, 0x00, sizeof(buffer));
+	bzero((char *)buffer, sizeof(buffer));
 	printf("SFF: wating connection request.\n");
 	len = sizeof(client_addr);
 
@@ -61,7 +60,7 @@ bool start_listening() {
 		printf("SFF: %s client connected.\n", temp);
 
 
-		msg_size = read(client_fd, buffer, 1024);
+		msg_size = read(client_fd, buffer, BUF_LEN);
 		write(client_fd, buffer, msg_size);
 		close(client_fd);
 		printf("SFF: %s client closed.\n", temp);
