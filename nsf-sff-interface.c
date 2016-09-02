@@ -12,7 +12,47 @@
 */
 bool start_listening() {
 
-	int source_address_size , data_size, destination_address_size, bytes_sent;
+	int saddr_size , data_size;
+    struct sockaddr_in saddr;
+    unsigned char *buffer=malloc(65535);
+
+
+    int sock_raw = socket( AF_PACKET , SOCK_RAW , htons(ETH_P_ALL)) ;
+
+     if(sock_raw < 0)
+        perror("setsockopt");
+
+    setsockopt(sock_raw , SOL_SOCKET , SO_BINDTODEVICE , "sff0:0" , strlen("sff0:0")+ 1 );
+
+    if(sock_raw < 0)
+    {
+        perror("Socket Error");
+        return 1;
+    }
+
+    while(1)
+    {
+        saddr_size = sizeof (struct sockaddr);
+        //Receive a packet
+        data_size = recvfrom(sock_raw , buffer , 65536 , 0 ,(struct sockaddr *) &saddr , (socklen_t*)&saddr_size);
+
+        if(data_size <0 )
+        {
+            printf("Recvfrom error , failed to get packets\n");
+            return 1;
+        }
+        else{
+        printf("Received %d bytes\n",data_size);
+
+        //Huge code to process the packet
+
+        //Send it out through "eth1" here 
+
+        }
+    }
+    close(sock_raw);
+
+	/*int source_address_size , data_size, destination_address_size, bytes_sent;
     struct sockaddr_ll source_address, destination_address;
     unsigned char *buffer=malloc(65535);
 
@@ -70,5 +110,5 @@ bool start_listening() {
 
         }
     }
-    close(sock_raw);
+    close(sock_raw);*/
 }
