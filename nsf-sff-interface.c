@@ -11,58 +11,64 @@
 
 */
 bool start_listening() {
-	char buffer[BUF_LEN];
-	struct sockaddr_in server_addr, client_addr;
-	char temp[20];
-	int server_fd, client_fd;
 
-	int len, msg_size, portno = 1;
+	int source_address_size , data_size, destination_address_size, bytes_sent;
+    struct sockaddr_ll source_address, destination_address;
+    unsigned char *buffer=malloc(65535);
 
-	/* First call to socket() function */
-	server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    int sock_raw = socket( PF_PACKET , SOCK_RAW , htons(ETH_P_ALL)) ; //For receiving
+    int sock = socket( PF_PACKET , SOCK_RAW , IPPROTO_RAW) ;            //For sending
 
-	if (server_fd < 0) {
-		perror("ERROR opening socket");
-		exit(1);
-	}
+    memset(&source_address, 0, sizeof(struct sockaddr_ll));
+    source_address.sll_family = AF_PACKET;
+    source_address.sll_protocol = htons(ETH_P_ALL);
+    source_address.sll_ifindex = if_nametoindex("sff0");
+    if (bind(sock_raw, (struct sockaddr*) &source_address, sizeof(source_address)) < 0) {
+        perror("bind failed\n");
+        close(sock_raw);
+    }
 
-	/* Initialize socket structure */
-	bzero((char *) &server_addr, sizeof(server_addr));
-	portno = SFF_LISTEN_PORT;
+    memset(&destination_address, 0, sizeof(struct sockaddr_ll));
+    destination_address.sll_family = AF_PACKET;
+    destination_address.sll_protocol = htons(ETH_P_ALL);
+    destination_address.sll_ifindex = if_nametoindex("eth0");
+    if (bind(sock, (struct sockaddr*) &destination_address, sizeof(destination_address)) < 0) {
+      perror("bind failed\n");
+      close(sock);
+    }
+    struct ifreq ifr;
+    memset(&ifr, 0, sizeof(ifr));
+    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "eth0");
+    if (setsockopt(sock, SOL_SOCKET, SO_BINDTODEVICE, (void *)&ifr, sizeof(ifr)) < 0) {
+        perror("bind to eth0");
+        }
 
-	server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = inet_addr(SFF_LISTEN_ADDR);
-	server_addr.sin_port = htons(portno);
+    while(1)
+    {
+        source_address_size = sizeof (struct sockaddr);
+        destination_address_size = sizeof (struct sockaddr);
+        //Receive a packet
+        data_size = recvfrom(sock_raw , buffer , 65536 , 0 ,(struct sockaddr *) &source_address , (socklen_t*)&source_address_size);
 
-	/* Now bind the host address using bind() call.*/
-	if (bind(server_fd, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0) {
-		printf("SFF: ERROR on binding\n");
-		exit(1);
-	}
+        if(data_size <0 )
+        {
+            printf("Recvfrom error , failed to get packets\n");
+            return 1;
+        }
+        else{
+        	printf("Received %d bytes\n",data_size);
 
-	if(listen(server_fd, 5) < 0) {
-		printf("SFF: Can't listening connect\n");
-		exit(0);
-	}
+        //Huge code to process the packet (optional)
 
-	bzero((char *)buffer, sizeof(buffer));
-	printf("SFF: wating connection request.\n");
-	len = sizeof(client_addr);
+        //Send the same packet out
+        bytes_sent=write(sock,buffer,data_size);
+        printf("Sent %d bytes\n",bytes_sent);
+         if (bytes_sent < 0) {
+            perror("sendto");
+            exit(1);
+         }
 
-	while(true) {
-		client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &len);
-		if(client_fd < 0) {
-			printf("SFF: accept failed.\n");
-			exit(0);
-		}
-
-		inet_ntop(AF_INET, &client_addr.sin_addr.s_addr, temp, sizeof(temp));
-		printf("SFF: %s client connected.\n", temp);
-
-
-		msg_size = read(client_fd, buffer, BUF_LEN);
-		write(client_fd, buffer, msg_size);
-		close(client_fd);
-		printf("SFF: %s client closed.\n", temp);
-	}
+        }
+    }
+    close(sock_raw);
 }
