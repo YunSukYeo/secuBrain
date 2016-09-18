@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="urn:opendaylight:flow:inventory">
+    <strict>false</strict>
+    <flow-name>FooXf103</flow-name>
+    <id>0</id>
+    <cookie_mask>255</cookie_mask>
+    <cookie>103</cookie>
+    <table_id>0</table_id>
+    <priority>100</priority>
+    <hard-timeout>1200</hard-timeout>
+    <idle-timeout>3400</idle-timeout>
+    <installHw>false</installHw>
+    <instructions>
+        <instruction>
+            <order>0</order>
+            <apply-actions>
+                <action>
+                    <order>0</order>
+                    <output-action>
+                        <output-node-connector>openflow:2:1</output-node-connector>
+                    </output-action>
+                </action>
+            </apply-actions>
+        </instruction>
+    </instructions>
+    <match>
+        <in-port>openflow:2:3</in-port>
+        <in-port>openflow:2:4</inport>
+    </match>
+</flow>

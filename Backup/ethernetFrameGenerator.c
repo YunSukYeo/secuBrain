@@ -7,7 +7,8 @@
 #include <linux/if_arp.h>
 
 
-int main() {
+int main(int argc, char* argv[]) {
+	printf("src: %s, dest: %s\n", argv[1], argv[2]);
 	int s, j;
 
 	s = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
