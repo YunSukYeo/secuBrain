@@ -76,6 +76,7 @@ int main(int argc, char *args[]) {
         return -1;
     }
 
+    /* Firewall-SFF Connection */
     printf("Start Firewall %s\n", args[1]);
     start_listening(args[1], &processPacket);
 
@@ -83,7 +84,7 @@ int main(int argc, char *args[]) {
         // MysqlInsertQuery("firewall_rule", "saddr, daddr, action", "1523, 1342, 128", mysqlInsertCallback);
         // MysqlUpdateQuery("firewall_rule", "saddr, daddr", "111, 111", "1=1", mysqlUpdateCallback);
         // MysqlDeleteQuery("firewall_rule", "idx=1", mysqlDeleteCallback);
-        // MysqlSelectQuery("firewall_rule", "idx, saddr, daddr, action", NULL, mysqlSelectCallback);
+        // MysqlSelectQuery("firewall_rule", "idx, saddr, daddr, action", NULL, 1, mysqlSelectCallback);
 
     }
 }

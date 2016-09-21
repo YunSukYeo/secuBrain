@@ -42,21 +42,26 @@ MYSQL_ROW MysqlGetRow(MYSQL_RES *sqlResult) {
     return mysql_fetch_row(sqlResult);
 }
 
-void MysqlSelectQuery(char *tableName, char *columns, char *where, MysqlCallback callback) {
+void MysqlSelectQuery(char *tableName, char *columns, char *where, int limitOneOption, MysqlCallback callback) {
     int lenColumns = strlen(columns), lenTable = strlen(tableName), lenWhere = where == NULL ? 0 : strlen(where);
     int len = lenColumns + lenTable + lenWhere + 25;
     char *query = (char*)malloc(len);
     MYSQL_RES *sqlResult;
     memset(query, '\0', len);
 
-    strcpy(query, "SELECT ");
-    strcpy(query + 7, columns);
-    strcpy(query + 7 + lenColumns, " FROM ");
-    strcpy(query + 7 + lenColumns + 6, tableName);
+    char *tmp = query;
+    strcpy(tmp, "SELECT "); tmp += 7;
+    strcpy(tmp, columns); tmp += lenColumns;
+    strcpy(tmp, " FROM "); tmp += 6;
+    strcpy(tmp, tableName); tmp += lenTable;
 
     if(where != NULL) {
-        strcpy(query + 7 + lenColumns + 6 + lenTable, " WHERE ");
-        strcpy(query + 7 + lenColumns + 6 + lenTable + 7, where);
+        strcpy(tmp, " WHERE "); tmp += 7;
+        strcpy(tmp, where); tmp += lenWhere;
+    }
+
+    if(limitOneOption) {
+        strcpy(tmp, " LIMIT 1"); tmp += 8;
     }
     int queryStat = mysql_query(connection, query);
 

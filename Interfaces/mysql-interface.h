@@ -10,7 +10,7 @@ int MysqlGetNumRows(MYSQL_RES *sqlResult);
 int MysqlGetNumColumns(MYSQL_RES *sqlResult);
 MYSQL_FIELD* MysqlGetFields(MYSQL_RES *sqlResult);
 MYSQL_ROW MysqlGetRow(MYSQL_RES *sqlResult);
-void MysqlSelectQuery(char *tableName, char *columns, char *where, MysqlCallback callback);
+void MysqlSelectQuery(char *tableName, char *columns, char *where, int limitOneOption, MysqlCallback callback);
 void MysqlInsertQuery(char *tableName, char *colums, char *values, MysqlCallback callback);
 void MysqlUpdateQuery(char *tableName, char *columns, char *values, char *where, MysqlCallback callback);
 void MysqlDeleteQuery(char *tableName, char *where, MysqlCallback callback);
