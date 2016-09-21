@@ -1,0 +1,13 @@
+DROP DATABASE IF EXISTS `hackathon`;
+CREATE DATABASE IF NOT EXISTS `hackathon`;
+use hackathon;
+
+CREATE TABLE IF NOT EXISTS `firewall_rule` (
+    `idx` INT(11) UNSIGNED AUTO_INCREMENT NOT NULL,
+    `saddr` INT(4) UNSIGNED DEFAULT NULL,
+    `daddr` INT(4) UNSIGNED DEFAULT NULL,
+    `action` INT(1) UNSIGNED NOT NULL,
+
+    PRIMARY KEY(`idx`)
+
+) ENGINE=InnoDB CHARSET=utf8;
