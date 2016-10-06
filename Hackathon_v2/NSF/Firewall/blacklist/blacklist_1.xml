@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <policy xmlns="http://skku.com/iot/example/ietf-i2nsf-capability-interface"
+             xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <rules nc:operation="create">
+		  <rule-name>Employee2</rule-name>
+		  <rule-id>2</rule-id>
+		  <condition>
+			<packet-sec-condtion>
+				<packet-sec-ipv4>
+					<pkt-sec-cond-ipv4-src-addr>10.0.0.1</pkt-sec-cond-ipv4-src-addr>
+					<pkt-sec-cond-ipv4-src-addr>10.0.0.2</pkt-sec-cond-ipv4-src-addr>
+					<pkt-sec-cond-ipv4-dest-addr>10.0.0.4</pkt-sec-cond-ipv4-dest-addr>
+				</packet-sec-ipv4>
+			</packet-sec-condtion>
+			<generic-context-condition>
+				<schedule>
+					<start-time>12</start-time>
+					<end-time>24</end-time>
+				</schedule>
+		    </generic-context-condition>
+		  </condition>
+		  <action>
+			<action-type>
+				<ingress-action>
+					<deny>true</deny>
+				</ingress-action>
+			</action-type>
+		  </action>
+	   </rules>
+      </policy>
+    </config>
+  </edit-config>
+</rpc>
+]]>]]>
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="2">
+  <close-session/>
+</rpc>
+]]>]]>

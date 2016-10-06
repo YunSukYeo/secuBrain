@@ -1,0 +1,96 @@
+module ietf-i2nsf-capability-interface {
+  namespace "http://skku.com/iot/example/ietf-i2nsf-capability-interface";
+  prefix nsc;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+
+  import ietf-yang-types {
+	  prefix yang;
+  }
+
+  import tailf-common {
+	prefix tailf;
+  } 
+
+
+  /* A set of filtering structures  */
+  container policy {
+    tailf:callpoint hcp;
+
+	list rules {
+		key rule-name;
+		max-elements 64;
+		leaf rule-name {
+			type string;
+			mandatory true;
+		}
+		leaf rule-id {
+			type uint32;
+			mandatory true;
+		}
+		container condition {
+			container packet-sec-condtion {
+				container packet-sec-ipv4 {
+					leaf-list pkt-sec-cond-ipv4-src-addr {
+						type inet:ip-address;
+						min-elements 0;
+						max-elements 50;
+					}
+					leaf-list pkt-sec-cond-ipv4-dest-addr {
+						type inet:ip-address;
+						min-elements 0;
+						max-elements 50;
+
+					}
+				}
+			}
+			container generic-context-condition {
+				container schedule {
+					leaf start-time {
+						type string;
+						units 24-hour-clock;
+					}
+					leaf end-time {
+						type string;
+						units 24-hour-clock;
+					}
+				}
+			}
+		}
+		container action {
+			container action-type {
+				container ingress-action {
+					leaf permit {
+						type boolean;
+					}
+					leaf deny {
+						type boolean;
+					}
+					leaf mirror {
+						type boolean;
+					}
+				}
+				container egress-action {
+					leaf signal {
+						type boolean;
+					}
+					leaf encapsulate {
+						type boolean;
+					}
+				}
+				container apply-profile-action {
+					leaf dpi {
+						type boolean;
+					}
+					leaf syn-flood {
+						type boolean;
+					}
+				}
+			}
+		}
+	}
+  }
+}
+

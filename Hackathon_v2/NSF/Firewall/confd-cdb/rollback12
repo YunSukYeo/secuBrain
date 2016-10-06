@@ -1,0 +1,12 @@
+# Created by: admin
+# Date: 2016-10-05 20:53:52
+# Via: netconf
+# Type: delta
+# Label: 
+# Comment: 
+# No: 10017
+
+policy {
+    delete:
+    rules Employee;
+}
