@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 
-#define DB_HOST "127.0.0.1"
+#define DB_HOST "localhost"
 #define DB_USER "root"
 #define DB_PASS "secu"
 #define DB_NAME "hackathon"
@@ -20,6 +20,27 @@ int MysqlInitialize() {
         return 0;
     }
     return 1;
+}
+
+int MysqlGetLastInsertedRowID() {
+    char *query = (char *) malloc(32);
+    int n = sprintf(query, "SELECT LAST_INSERT_ID()");
+    query[n] = '\0';
+    
+    int queryStat = mysql_query(connection, query);
+    free(query);
+
+    if(queryStat != 0) {
+        fprintf(stderr, "Mysql query error %s\n", mysql_error(&conn));
+        return 0;
+    }
+
+    MYSQL_RES *sqlResult = mysql_store_result(connection);
+    if(MysqlGetNumRows(sqlResult) != 0) {
+        MYSQL_ROW row = MysqlGetRow(sqlResult);
+        return (int) *(row[0]);
+    }
+    return 0;
 }
 
 int MysqlGetNumRows(MYSQL_RES *sqlResult) {
@@ -42,7 +63,7 @@ MYSQL_ROW MysqlGetRow(MYSQL_RES *sqlResult) {
     return mysql_fetch_row(sqlResult);
 }
 
-void MysqlSelectQuery(char *tableName, char *columns, char *where, int limitOneOption, MysqlCallback callback) {
+MYSQL_RES* MysqlSelectQuery(char *tableName, char *columns, char *where, int limitOneOption) {
     int lenColumns = strlen(columns), lenTable = strlen(tableName), lenWhere = where == NULL ? 0 : strlen(where);
     int len = lenColumns + lenTable + lenWhere + 25;
     char *query = (char*)malloc(len);
@@ -63,24 +84,26 @@ void MysqlSelectQuery(char *tableName, char *columns, char *where, int limitOneO
     if(limitOneOption) {
         strcpy(tmp, " LIMIT 1"); tmp += 8;
     }
+
     int queryStat = mysql_query(connection, query);
 
     free(query);
+
     if(queryStat != 0) {
         fprintf(stderr, "Mysql query error %s\n", mysql_error(&conn));
-        return;
+        return NULL;
     }
 
     sqlResult = mysql_store_result(connection);
-    callback(sqlResult);
-    mysql_free_result(sqlResult);
+    return sqlResult;
+    //callback(sqlResult);
+    //mysql_free_result(sqlResult);
 }
 
-void MysqlInsertQuery(char *tableName, char *columns, char *values, MysqlCallback callback) {
+bool MysqlInsertQuery(char *tableName, char *columns, char *values) {
     int lenTable = strlen(tableName), lenColumns = strlen(columns), lenValues = strlen(values);
     int len = lenTable + lenColumns + lenValues + 30;
     char *query = (char*)malloc(len);
-    MYSQL_RES *sqlResult;
 
     memset(query, '\0', len);
 
@@ -91,22 +114,22 @@ void MysqlInsertQuery(char *tableName, char *columns, char *values, MysqlCallbac
     strcpy(query + 12 + lenTable + 2 + lenColumns, ") VALUES (");
     strcpy(query + 12 + lenTable + 2 + lenColumns + 10, values);
     strcpy(query + 12 + lenTable + 2 + lenColumns + 10 + lenValues, ")");
+
     int queryStat = mysql_query(connection, query);
 
     free(query);
     if(queryStat != 0) {
         fprintf(stderr, "Mysql query error %s\n", mysql_error(&conn));
-        return;
+        return false;
     }
 
-    callback(NULL);
+    return true;
 }
 
-void MysqlUpdateQuery(char *tableName, char *columns, char *values, char *where, MysqlCallback callback) {
+bool MysqlUpdateQuery(char *tableName, char *columns, char *values, char *where) {
     int lenTable = strlen(tableName), lenColumns = strlen(columns), lenValues = strlen(values), lenWhere = strlen(where);
-    int len = lenTable + lenColumns + lenValues + lenWhere + 30, c = 0;
+    int len = lenTable + lenColumns + lenValues + lenWhere + 30;
     char *query = (char*)malloc(len), *tmp;
-    MYSQL_RES *sqlResult;
 
     memset(query, '\0', len);
 
@@ -144,17 +167,16 @@ void MysqlUpdateQuery(char *tableName, char *columns, char *values, char *where,
 
     if(queryStat != 0) {
         fprintf(stderr, "Mysql query error %s\n", mysql_error(&conn));
-        return;
+        return false;
     }
 
-    callback(NULL);
+    return true;
 }
 
-void MysqlDeleteQuery(char *tableName, char *where, MysqlCallback callback) {
+bool MysqlDeleteQuery(char *tableName, char *where) {
     int lenTable = strlen(tableName), lenWhere = strlen(where);
     int len = lenTable + lenWhere + 25;
     char *query = (char*)malloc(len);
-    MYSQL_RES *sqlResult;
     memset(query, '\0', len);
 
     strcpy(query, "DELETE FROM ");
@@ -166,8 +188,8 @@ void MysqlDeleteQuery(char *tableName, char *where, MysqlCallback callback) {
     free(query);
     if(queryStat != 0) {
         fprintf(stderr, "Mysql query error %s\n", mysql_error(&conn));
-        return;
+        return false;
     }
 
-    callback(NULL);
+    return true;
 }

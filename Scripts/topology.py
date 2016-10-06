@@ -55,8 +55,10 @@ def simpleTest():
     #sff.cmd('./packetSinffer > /tmp/sff.out &');
     sff.cmd('../bin/sff sff1-eth0 > /tmp/sff.out &');
     #sff.cmd('./sff sff1' + ' ' + sff.IP() + ' > /tmp/sff.out &');
-
-    firewall.cmd('../bin/firewall firewall-eth0 > /tmp/firewall.out &');
+    firewall.cmd('cd ../NSF/Firewall');
+    firewall.cmd('make init');
+    firewall.cmd('../../bin/firewall firewall-eth0 > /tmp/firewall.out &');
+    firewall.cmd('secu');
 
     # In order to check flow rule
     destination.cmd('../bin/ipPacketReceiver ', destination.name, destination.IP(), ' > /tmp/destination.out &');
