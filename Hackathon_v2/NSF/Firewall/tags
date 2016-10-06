@@ -1,0 +1,294 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CONFD_DIR	Makefile	/^CONFD_DIR ?= ..\/$/;"	m
+CONFD_FLAGS	Makefile	/^CONFD_FLAGS = --addloadpath $(CONFD_DIR)\/etc\/confd $/;"	m
+CONFD_FLAGS	Makefile	/^CONFD_FLAGS ?=$/;"	m
+DLIST_H	dlist.h	3;"	d
+Dlist	dlist.h	/^} Dlist;$/;"	t	typeref:struct:dlist
+OBJS	Makefile	/^OBJS	= $(SRC:.c=.o)$/;"	m
+SRC	Makefile	/^SRC	= hosts.c dlist.c$/;"	m
+START_FLAGS	Makefile	/^START_FLAGS ?=$/;"	m
+_HST_H_	hst.h	9;"	d
+access_stat	hosts-initial-version.c	/^struct access_stat {$/;"	s	file:
+access_stat	hosts-v2.c	/^struct access_stat {$/;"	s	file:
+access_stat	hosts-v3.c	/^struct access_stat {$/;"	s	file:
+access_stat	hosts.c	/^struct access_stat {$/;"	s	file:
+action	hosts.c	/^	bool action;$/;"	m	struct:host	file:
+activate_checkpoint_running	hosts-initial-version.c	/^static int activate_checkpoint_running (struct confd_db_ctx *dbx)$/;"	f	file:
+activate_checkpoint_running	hosts-v2.c	/^static int activate_checkpoint_running (struct confd_db_ctx *dbx)$/;"	f	file:
+activate_checkpoint_running	hosts-v3.c	/^static int activate_checkpoint_running (struct confd_db_ctx *dbx)$/;"	f	file:
+activate_checkpoint_running	hosts.c	/^static int activate_checkpoint_running (struct confd_db_ctx *dbx)$/;"	f	file:
+add_checkpoint_running	hosts-v2.c	/^static int add_checkpoint_running(struct confd_db_ctx *dbx)$/;"	f	file:
+add_host	hosts-initial-version.c	/^static void add_host(Dlist *list, struct host *new)$/;"	f	file:
+add_host	hosts-v2.c	/^static void add_host(Dlist *list, struct host *new)$/;"	f	file:
+add_host	hosts-v3.c	/^static void add_host(Dlist *list, struct host *new)$/;"	f	file:
+add_host	hosts.c	/^static void add_host(Dlist *list, struct host *new)$/;"	f	file:
+add_iface	hosts-v2.c	/^static void add_iface(Dlist *list, struct iface *new)$/;"	f	file:
+blacklist	hosts-initial-version.c	/^    struct in_addr blacklist;	\/\/ Source IP$/;"	m	struct:host	typeref:struct:host::in_addr	file:
+blacklist	hosts-v2.c	/^    struct in_addr blacklist;	\/\/ Source IP$/;"	m	struct:host	typeref:struct:host::in_addr	file:
+blacklist	hosts-v3.c	/^    struct in_addr blacklist;	\/\/ Source IP$/;"	m	struct:host	typeref:struct:host::in_addr	file:
+blacklist	hosts.c	/^	struct in_addr blacklist;$/;"	m	struct:host	typeref:struct:host::in_addr	file:
+blink	dlist.h	/^  struct dlist *blink;$/;"	m	struct:dlist	typeref:struct:dlist::dlist
+blocking_website	hosts.c	/^	struct in_addr blocking_website;$/;"	m	struct:host	typeref:struct:host::in_addr	file:
+bool	hosts.c	26;"	d	file:
+clear_db	hosts-v2.c	/^static void clear_db(Dlist *list)$/;"	f	file:
+create	hosts-initial-version.c	/^    int create;$/;"	m	struct:access_stat	file:
+create	hosts-v2.c	/^    int create;$/;"	m	struct:access_stat	file:
+create	hosts-v3.c	/^    int create;$/;"	m	struct:access_stat	file:
+create	hosts.c	/^    int create;$/;"	m	struct:access_stat	file:
+ctlsock	hosts-initial-version.c	/^    int ctlsock;$/;"	m	struct:mydata	file:
+ctlsock	hosts-v2.c	/^    int ctlsock;$/;"	m	struct:mydata	file:
+ctlsock	hosts-v3.c	/^    int ctlsock;$/;"	m	struct:mydata	file:
+ctlsock	hosts.c	/^    int ctlsock;$/;"	m	struct:mydata	file:
+dbcbs	hosts-initial-version.c	/^static struct confd_db_cbs dbcbs;$/;"	v	typeref:struct:confd_db_cbs	file:
+dbcbs	hosts-v2.c	/^static struct confd_db_cbs dbcbs;$/;"	v	typeref:struct:confd_db_cbs	file:
+dbcbs	hosts-v3.c	/^static struct confd_db_cbs dbcbs;$/;"	v	typeref:struct:confd_db_cbs	file:
+dbcbs	hosts.c	/^static struct confd_db_cbs dbcbs;$/;"	v	typeref:struct:confd_db_cbs	file:
+dctx	hosts-initial-version.c	/^static struct confd_daemon_ctx *dctx;$/;"	v	typeref:struct:confd_daemon_ctx	file:
+dctx	hosts-v2.c	/^static struct confd_daemon_ctx *dctx;$/;"	v	typeref:struct:confd_daemon_ctx	file:
+dctx	hosts-v3.c	/^static struct confd_daemon_ctx *dctx;$/;"	v	typeref:struct:confd_daemon_ctx	file:
+dctx	hosts.c	/^static struct confd_daemon_ctx *dctx;$/;"	v	typeref:struct:confd_daemon_ctx	file:
+default_db	hosts-v2.c	/^static Dlist *default_db()$/;"	f	file:
+del_checkpoint_running	hosts-initial-version.c	/^static int  del_checkpoint_running  (struct confd_db_ctx *dbx)$/;"	f	file:
+del_checkpoint_running	hosts-v2.c	/^static int  del_checkpoint_running  (struct confd_db_ctx *dbx)$/;"	f	file:
+del_checkpoint_running	hosts-v3.c	/^static int  del_checkpoint_running  (struct confd_db_ctx *dbx)$/;"	f	file:
+del_checkpoint_running	hosts.c	/^static int  del_checkpoint_running  (struct confd_db_ctx *dbx)$/;"	f	file:
+delete_config	hosts-initial-version.c	/^static int delete_config(struct confd_db_ctx *dbx,$/;"	f	file:
+delete_config	hosts-v2.c	/^static int delete_config(struct confd_db_ctx *dbx,$/;"	f	file:
+delete_config	hosts-v3.c	/^static int delete_config(struct confd_db_ctx *dbx,$/;"	f	file:
+delete_config	hosts.c	/^static int delete_config(struct confd_db_ctx *dbx,$/;"	f	file:
+deny	hosts.c	/^	bool deny;$/;"	m	struct:host	file:
+dl_append	dlist.c	/^void dl_append(Dlist *l, void* val)$/;"	f
+dl_delete_node	dlist.c	/^void dl_delete_node(Dlist *node)$/;"	f
+dl_empty	dlist.c	/^int dl_empty(Dlist *l)$/;"	f
+dl_find	dlist.c	/^void* dl_find(Dlist* list, void* (f)(void*,void*), void* arg)$/;"	f
+dl_first	dlist.h	26;"	d
+dl_insert_a	dlist.c	/^void dl_insert_a(Dlist *n, void* val)$/;"	f
+dl_insert_b	dlist.c	/^void dl_insert_b(Dlist *node, void* v)$/;"	f
+dl_last	dlist.h	28;"	d
+dl_next	dlist.h	27;"	d
+dl_nil	dlist.h	30;"	d
+dl_prepend	dlist.c	/^void dl_prepend(Dlist *l, void* val)$/;"	f
+dl_prev	dlist.h	29;"	d
+dl_rtraverse	dlist.h	34;"	d
+dl_traverse	dlist.h	32;"	d
+dl_val	dlist.c	/^void* dl_val(Dlist *l)$/;"	f
+dlist	dlist.h	/^typedef struct dlist {$/;"	s
+dump_db	hosts-v2.c	/^static int dump_db(Dlist *list, char *filename)$/;"	f	file:
+enabled	hosts-v2.c	/^    int enabled;$/;"	m	struct:iface	file:
+end_time	hosts.c	/^	char end_time[10];$/;"	m	struct:host	file:
+false	hosts.c	28;"	d	file:
+find_host	hosts-initial-version.c	/^static Dlist *find_host(Dlist *list, confd_value_t *v)$/;"	f	file:
+find_host	hosts-v2.c	/^static Dlist *find_host(Dlist *list, confd_value_t *v)$/;"	f	file:
+find_host	hosts-v3.c	/^static Dlist *find_host(Dlist *list, confd_value_t *v)$/;"	f	file:
+find_host	hosts.c	/^static Dlist *find_host(Dlist *list, confd_value_t *v)$/;"	f	file:
+find_iface	hosts-v2.c	/^static Dlist *find_iface(Dlist *list,$/;"	f	file:
+flink	dlist.h	/^  struct dlist *flink;$/;"	m	struct:dlist	typeref:struct:dlist::dlist
+free_dlist	dlist.c	/^void free_dlist(Dlist *l)$/;"	f
+free_ifaces	hosts-v2.c	/^static void free_ifaces(Dlist *ifaces)$/;"	f	file:
+get_elem	hosts-initial-version.c	/^    int get_elem;$/;"	m	struct:access_stat	file:
+get_elem	hosts-v2.c	/^    int get_elem;$/;"	m	struct:access_stat	file:
+get_elem	hosts-v3.c	/^    int get_elem;$/;"	m	struct:access_stat	file:
+get_elem	hosts.c	/^    int get_elem;$/;"	m	struct:access_stat	file:
+get_next	hosts-initial-version.c	/^    int get_next;$/;"	m	struct:access_stat	file:
+get_next	hosts-v2.c	/^    int get_next;$/;"	m	struct:access_stat	file:
+get_next	hosts-v3.c	/^    int get_next;$/;"	m	struct:access_stat	file:
+get_next	hosts.c	/^    int get_next;$/;"	m	struct:access_stat	file:
+handle_stdin	hosts-initial-version.c	/^static void handle_stdin()$/;"	f	file:
+handle_stdin	hosts-v2.c	/^static void handle_stdin()$/;"	f	file:
+handle_stdin	hosts-v3.c	/^static void handle_stdin()$/;"	f	file:
+handle_stdin	hosts.c	/^static void handle_stdin()$/;"	f	file:
+hcp_calls	hosts-initial-version.c	/^static struct access_stat hcp_calls;$/;"	v	typeref:struct:access_stat	file:
+hcp_calls	hosts-v2.c	/^static struct access_stat hcp_calls;$/;"	v	typeref:struct:access_stat	file:
+hcp_calls	hosts-v3.c	/^static struct access_stat hcp_calls;$/;"	v	typeref:struct:access_stat	file:
+hcp_calls	hosts.c	/^static struct access_stat hcp_calls;$/;"	v	typeref:struct:access_stat	file:
+host	hosts-initial-version.c	/^struct host {$/;"	s	file:
+host	hosts-v2.c	/^struct host {$/;"	s	file:
+host	hosts-v3.c	/^struct host {$/;"	s	file:
+host	hosts.c	/^struct host {$/;"	s	file:
+host_cbks	hosts-initial-version.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:confd_data_cbs	file:
+host_cbks	hosts-v2.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:confd_data_cbs	file:
+host_cbks	hosts-v3.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:confd_data_cbs	file:
+host_cbks	hosts.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:confd_data_cbs	file:
+host_create	hosts-initial-version.c	/^static int host_create(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_create	hosts-v2.c	/^static int host_create(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_create	hosts-v3.c	/^static int host_create(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_create	hosts.c	/^static int host_create(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_delete	hosts-initial-version.c	/^static int host_delete(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_delete	hosts-v2.c	/^static int host_delete(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_delete	hosts-v3.c	/^static int host_delete(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_delete	hosts.c	/^static int host_delete(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_elem	hosts-initial-version.c	/^static int host_get_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_elem	hosts-v2.c	/^static int host_get_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_elem	hosts-v3.c	/^static int host_get_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_elem	hosts.c	/^static int host_get_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_next	hosts-initial-version.c	/^static int host_get_next(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_next	hosts-v2.c	/^static int host_get_next(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_next	hosts-v3.c	/^static int host_get_next(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_get_next	hosts.c	/^static int host_get_next(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_num_instances	hosts-initial-version.c	/^static int host_num_instances(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_num_instances	hosts-v2.c	/^static int host_num_instances(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_num_instances	hosts-v3.c	/^static int host_num_instances(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_num_instances	hosts.c	/^static int host_num_instances(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_set_elem	hosts-initial-version.c	/^static int host_set_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_set_elem	hosts-v2.c	/^static int host_set_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_set_elem	hosts-v3.c	/^static int host_set_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+host_set_elem	hosts.c	/^static int host_set_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+icp_calls	hosts-v2.c	/^static struct access_stat icp_calls;$/;"	v	typeref:struct:access_stat	file:
+iface	hosts-v2.c	/^struct iface {				\/\/Not use$/;"	s	file:
+iface_cbks	hosts-initial-version.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:	file:
+iface_cbks	hosts-v2.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:	file:
+iface_cbks	hosts-v3.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:	file:
+iface_cbks	hosts.c	/^static struct confd_data_cbs host_cbks, iface_cbks;$/;"	v	typeref:struct:	file:
+iface_create	hosts-v2.c	/^static int iface_create(struct confd_trans_ctx *tctx,$/;"	f	file:
+iface_delete	hosts-v2.c	/^static int iface_delete(struct confd_trans_ctx *tctx,$/;"	f	file:
+iface_get_elem	hosts-v2.c	/^static int iface_get_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+iface_get_next	hosts-v2.c	/^static int iface_get_next(struct confd_trans_ctx *tctx,$/;"	f	file:
+iface_set_elem	hosts-v2.c	/^static int iface_set_elem(struct confd_trans_ctx *tctx,$/;"	f	file:
+ifaces	hosts-initial-version.c	/^    Dlist *ifaces;$/;"	m	struct:host	file:
+ifaces	hosts-v2.c	/^    Dlist *ifaces;$/;"	m	struct:host	file:
+ifaces	hosts-v3.c	/^    Dlist *ifaces;$/;"	m	struct:host	file:
+ifaces	hosts.c	/^	Dlist *ifaces;$/;"	m	struct:host	file:
+init_cli	hosts-initial-version.c	/^static void init_cli()$/;"	f	file:
+init_cli	hosts-v2.c	/^static void init_cli()$/;"	f	file:
+init_cli	hosts-v3.c	/^static void init_cli()$/;"	f	file:
+init_cli	hosts.c	/^static void init_cli()$/;"	f	file:
+ip	hosts-v2.c	/^    struct in_addr ip;$/;"	m	struct:iface	typeref:struct:iface::in_addr	file:
+ip_of_staff	hosts.c	/^	struct in_addr ip_of_staff[50];$/;"	m	struct:host	typeref:struct:host::in_addr	file:
+lock	hosts-initial-version.c	/^static int lock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+lock	hosts-v2.c	/^static int lock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+lock	hosts-v3.c	/^static int lock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+lock	hosts.c	/^static int lock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+locked	hosts-initial-version.c	/^    int locked;$/;"	m	struct:mydata	file:
+locked	hosts-v2.c	/^    int locked;$/;"	m	struct:mydata	file:
+locked	hosts-v3.c	/^    int locked;$/;"	m	struct:mydata	file:
+locked	hosts.c	/^    int locked;$/;"	m	struct:mydata	file:
+main	hosts-initial-version.c	/^int main(int argc, char *argv[]) {$/;"	f
+main	hosts-v2.c	/^int main(int argc, char *argv[]) {$/;"	f
+main	hosts-v3.c	/^int main(int argc, char *argv[]) {$/;"	f
+main	hosts.c	/^int main(int argc, char *argv[]) {$/;"	f
+mask	hosts-v2.c	/^    struct in_addr mask;$/;"	m	struct:iface	typeref:struct:iface::in_addr	file:
+mirror	hosts.c	/^	bool mirror;$/;"	m	struct:host	file:
+mydata	hosts-initial-version.c	/^struct mydata {$/;"	s	file:
+mydata	hosts-v2.c	/^struct mydata {$/;"	s	file:
+mydata	hosts-v3.c	/^struct mydata {$/;"	s	file:
+mydata	hosts.c	/^struct mydata {$/;"	s	file:
+name	hosts-initial-version.c	/^    char name[256];		\/\/ ID$/;"	m	struct:host	file:
+name	hosts-v2.c	/^    char name[256];		\/\/ ID$/;"	m	struct:host	file:
+name	hosts-v2.c	/^    char name[64];$/;"	m	struct:iface	file:
+name	hosts-v3.c	/^    char name[256];		\/\/ ID$/;"	m	struct:host	file:
+new_dlist	dlist.c	/^Dlist *new_dlist()$/;"	f
+new_host	hosts-initial-version.c	/^static struct host *new_host(char *name, char *permit, char *src_IP)$/;"	f	file:
+new_host	hosts-v2.c	/^static struct host *new_host(char *name, char *permit, char *src_IP)$/;"	f	file:
+new_host	hosts-v3.c	/^static struct host *new_host(char *name, char *permit, char *src_IP)$/;"	f	file:
+new_host	hosts.c	/^static struct host *new_host(char *name, char *permit, char *src_IP)$/;"	f	file:
+new_iface	hosts-v2.c	/^static struct iface *new_iface(char *name, char *ip, char *mask, char *ena)$/;"	f	file:
+nsc__callpointid_hcp	hst.h	40;"	d
+nsc__ns	hst.h	16;"	d
+nsc__ns_id	hst.h	17;"	d
+nsc__ns_uri	hst.h	18;"	d
+nsc_action	hst.h	25;"	d
+nsc_action_type	hst.h	37;"	d
+nsc_blacklist	hst.h	22;"	d
+nsc_condition	hst.h	26;"	d
+nsc_deny	hst.h	36;"	d
+nsc_end_time	hst.h	34;"	d
+nsc_generic_context_condition	hst.h	35;"	d
+nsc_ingress_action	hst.h	39;"	d
+nsc_packet_sec_condtion	hst.h	31;"	d
+nsc_packet_sec_ipv4	hst.h	33;"	d
+nsc_permit	hst.h	32;"	d
+nsc_pkt_sec_cond_ipv4_dest_addr	hst.h	27;"	d
+nsc_pkt_sec_cond_ipv4_src_addr	hst.h	24;"	d
+nsc_policy	hst.h	23;"	d
+nsc_rule_id	hst.h	21;"	d
+nsc_rule_name	hst.h	38;"	d
+nsc_rules	hst.h	28;"	d
+nsc_schedule	hst.h	30;"	d
+nsc_start_time	hst.h	29;"	d
+num_instances	hosts-initial-version.c	/^    int num_instances;$/;"	m	struct:access_stat	file:
+num_instances	hosts-v2.c	/^    int num_instances;$/;"	m	struct:access_stat	file:
+num_instances	hosts-v3.c	/^    int num_instances;$/;"	m	struct:access_stat	file:
+num_instances	hosts.c	/^    int num_instances;$/;"	m	struct:access_stat	file:
+permit	hosts-initial-version.c	/^    char permit[256];	\/\/	Choice Permit or Deny.$/;"	m	struct:host	file:
+permit	hosts-v2.c	/^    char permit[256];	\/\/	Choice Permit or Deny.$/;"	m	struct:host	file:
+permit	hosts-v3.c	/^    char permit[256];	\/\/	Choice Permit or Deny.$/;"	m	struct:host	file:
+permit	hosts.c	/^    bool permit;$/;"	m	struct:host	file:
+read_stdin	hosts-initial-version.c	/^static int read_stdin = 1;$/;"	v	file:
+read_stdin	hosts-v2.c	/^static int read_stdin = 1;$/;"	v	file:
+read_stdin	hosts-v3.c	/^static int read_stdin = 1;$/;"	v	file:
+read_stdin	hosts.c	/^static int read_stdin = 1;$/;"	v	file:
+remove	hosts-initial-version.c	/^    int remove;$/;"	m	struct:access_stat	file:
+remove	hosts-v2.c	/^    int remove;$/;"	m	struct:access_stat	file:
+remove	hosts-v3.c	/^    int remove;$/;"	m	struct:access_stat	file:
+remove	hosts.c	/^    int remove;$/;"	m	struct:access_stat	file:
+restore	hosts-initial-version.c	/^static Dlist *restore(char *fname)$/;"	f	file:
+restore	hosts-v2.c	/^static Dlist *restore(char *fname)$/;"	f	file:
+restore	hosts-v3.c	/^static Dlist *restore(char *fname)$/;"	f	file:
+restore	hosts.c	/^static Dlist *restore(char *fname)$/;"	f	file:
+reteof	hosts-initial-version.c	/^static int reteof(struct confd_trans_ctx *tctx)$/;"	f	file:
+reteof	hosts-v2.c	/^static int reteof(struct confd_trans_ctx *tctx)$/;"	f	file:
+reteof	hosts-v3.c	/^static int reteof(struct confd_trans_ctx *tctx)$/;"	f	file:
+reteof	hosts.c	/^static int reteof(struct confd_trans_ctx *tctx)$/;"	f	file:
+rule_id	hosts.c	/^	int rule_id;$/;"	m	struct:host	file:
+rule_name	hosts.c	/^    char rule_name[256];		\/\/ ID$/;"	m	struct:host	file:
+running_db	hosts-initial-version.c	/^static Dlist *running_db = NULL;$/;"	v	file:
+running_db	hosts-v2.c	/^static Dlist *running_db = NULL;$/;"	v	file:
+running_db	hosts-v3.c	/^static Dlist *running_db = NULL;$/;"	v	file:
+running_db	hosts.c	/^static Dlist *running_db = NULL;$/;"	v	file:
+set_elem	hosts-initial-version.c	/^    int set_elem;$/;"	m	struct:access_stat	file:
+set_elem	hosts-v2.c	/^    int set_elem;$/;"	m	struct:access_stat	file:
+set_elem	hosts-v3.c	/^    int set_elem;$/;"	m	struct:access_stat	file:
+set_elem	hosts.c	/^    int set_elem;$/;"	m	struct:access_stat	file:
+show_db	hosts-initial-version.c	/^static void show_db(Dlist *list)$/;"	f	file:
+show_db	hosts-v2.c	/^static void show_db(Dlist *list)$/;"	f	file:
+show_db	hosts-v3.c	/^static void show_db(Dlist *list)$/;"	f	file:
+show_db	hosts.c	/^static void show_db(Dlist *list)$/;"	f	file:
+show_host	hosts-initial-version.c	/^static void show_host(Dlist *hptr)		\/\/Show IP lists$/;"	f	file:
+show_host	hosts-v2.c	/^static void show_host(Dlist *hptr)		\/\/Show IP lists$/;"	f	file:
+show_host	hosts-v3.c	/^static void show_host(Dlist *hptr)		\/\/Show IP lists$/;"	f	file:
+show_host	hosts.c	/^static void show_host(Dlist *hptr)		\/\/Show IP lists$/;"	f	file:
+staff_num	hosts.c	/^	int staff_num;$/;"	m	struct:host	file:
+start_time	hosts.c	/^	char start_time[10];$/;"	m	struct:host	file:
+tr_abort	hosts-initial-version.c	/^static int tr_abort(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_abort	hosts-v2.c	/^static int tr_abort(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_abort	hosts-v3.c	/^static int tr_abort(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_abort	hosts.c	/^static int tr_abort(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_commit	hosts-initial-version.c	/^static int tr_commit(struct confd_trans_ctx *tctx) \/\/ use the xml files.$/;"	f	file:
+tr_commit	hosts-v2.c	/^static int tr_commit(struct confd_trans_ctx *tctx) \/\/ use the xml files.$/;"	f	file:
+tr_commit	hosts-v3.c	/^static int tr_commit(struct confd_trans_ctx *tctx) \/\/ use the xml files.$/;"	f	file:
+tr_commit	hosts.c	/^static int tr_commit(struct confd_trans_ctx *tctx) \/\/ use the xml files.$/;"	f	file:
+tr_finish	hosts-initial-version.c	/^static int tr_finish(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_finish	hosts-v2.c	/^static int tr_finish(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_finish	hosts-v3.c	/^static int tr_finish(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_finish	hosts.c	/^static int tr_finish(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_init	hosts-initial-version.c	/^static int tr_init(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_init	hosts-v2.c	/^static int tr_init(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_init	hosts-v3.c	/^static int tr_init(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_init	hosts.c	/^static int tr_init(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_prepare	hosts-initial-version.c	/^static int tr_prepare(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_prepare	hosts-v2.c	/^static int tr_prepare(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_prepare	hosts-v3.c	/^static int tr_prepare(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_prepare	hosts.c	/^static int tr_prepare(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_writestart	hosts-initial-version.c	/^static int tr_writestart(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_writestart	hosts-v2.c	/^static int tr_writestart(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_writestart	hosts-v3.c	/^static int tr_writestart(struct confd_trans_ctx *tctx)$/;"	f	file:
+tr_writestart	hosts.c	/^static int tr_writestart(struct confd_trans_ctx *tctx)$/;"	f	file:
+trans	hosts-initial-version.c	/^static struct confd_trans_cbs trans;$/;"	v	typeref:struct:confd_trans_cbs	file:
+trans	hosts-v2.c	/^static struct confd_trans_cbs trans;$/;"	v	typeref:struct:confd_trans_cbs	file:
+trans	hosts-v3.c	/^static struct confd_trans_cbs trans;$/;"	v	typeref:struct:confd_trans_cbs	file:
+trans	hosts.c	/^static struct confd_trans_cbs trans;$/;"	v	typeref:struct:confd_trans_cbs	file:
+true	hosts.c	27;"	d	file:
+unlock	hosts-initial-version.c	/^static int unlock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+unlock	hosts-v2.c	/^static int unlock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+unlock	hosts-v3.c	/^static int unlock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+unlock	hosts.c	/^static int unlock(struct confd_db_ctx *dbx, enum confd_dbname dbname)$/;"	f	file:
+val	dlist.h	/^  void* val;$/;"	m	struct:dlist
+workersock	hosts-initial-version.c	/^    int workersock;$/;"	m	struct:mydata	file:
+workersock	hosts-v2.c	/^    int workersock;$/;"	m	struct:mydata	file:
+workersock	hosts-v3.c	/^    int workersock;$/;"	m	struct:mydata	file:
+workersock	hosts.c	/^    int workersock;$/;"	m	struct:mydata	file:
